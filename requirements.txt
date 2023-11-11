@@ -4,3 +4,4 @@ argparse
 numpy
 tqdm
 torchvision
+scipy
