@@ -27,10 +27,12 @@ class TinyYOLOv3_onecls(object):
                  weight_file='Models/yolo-tiny-onecls/best-model.pth',
                  nms=0.2,
                  conf_thres=0.45,
-                 device='cuda'):
+                #  device='cuda'
+                device='cpu' 
+                 ):
         self.input_size = input_size
         self.model = Darknet(config_file).to(device)
-        self.model.load_state_dict(torch.load(weight_file))
+        self.model.load_state_dict(torch.load(weight_file,  map_location=torch.device('cpu')))
         self.model.eval()
         self.device = device
 
